@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories Example</title>
+    <style>
+        /* Styling for the container */
+        .container {
+            width: 80%;
+            margin: auto;
+            padding-top: 20px;
+        }
+
+        /* Tab styles */
+        .tabs {
+            display: flex;
+            justify-content: space-around;
+            cursor: pointer;
+            background-color: #f1f1f1;
+            padding: 10px 0;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            font-size: 18px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #ddd;
+            transition: background-color 0.3s ease;
+        }
+
+        .tab:hover {
+            background-color: #ccc;
+        }
+
+        /* Content section styling */
+        .content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+
+        .active-tab {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .active-content {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Category Tabs -->
+        <div class="tabs">
+            <div class="tab" id="category1" onclick="showContent(1)">Category 1</div>
+            <div class="tab" id="category2" onclick="showContent(2)">Category 2</div>
+            <div class="tab" id="category3" onclick="showContent(3)">Category 3</div>
+            <div class="tab" id="category4" onclick="showContent(4)">Category 4</div>
+            <div class="tab" id="category5" onclick="showContent(5)">Category 5</div>
+        </div>
+
+        <!-- Category Content -->
+        <div id="content1" class="content">
+            <h2>Content for Category 1</h2>
+            <p>This is the content for Category 1. You can add any content here.</p>
+        </div>
+        <div id="content2" class="content">
+            <h2>Content for Category 2</h2>
+            <p>This is the content for Category 2. You can add any content here.</p>
+        </div>
+        <div id="content3" class="content">
+            <h2>Content for Category 3</h2>
+            <p>This is the content for Category 3. You can add any content here.</p>
+        </div>
+        <div id="content4" class="content">
+            <h2>Content for Category 4</h2>
+            <p>This is the content for Category 4. You can add any content here.</p>
+        </div>
+        <div id="content5" class="content">
+            <h2>Content for Category 5</h2>
+            <p>This is the content for Category 5. You can add any content here.</p>
+        </div>
+    </div>
+
+    <script>
+        // Function to handle tab switching
+        function showContent(categoryNumber) {
+            // Hide all content sections
+            var contents = document.querySelectorAll('.content');
+            contents.forEach(function(content) {
+                content.classList.remove('active-content');
+            });
+
+            // Remove active class from all tabs
+            var tabs = document.querySelectorAll('.tab');
+            tabs.forEach(function(tab) {
+                tab.classList.remove('active-tab');
+            });
+
+            // Show the clicked category's content
+            var contentId = "content" + categoryNumber;
+            var tabId = "category" + categoryNumber;
+
+            document.getElementById(contentId).classList.add('active-content');
+            document.getElementById(tabId).classList.add('active-tab');
+        }
+
+        // Initialize the first tab and content as active
+        showContent(1);
+    </script>
+</body>
+</html>
